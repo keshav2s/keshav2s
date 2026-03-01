@@ -10,7 +10,7 @@
                 id: 1,
                 title: '25-KVA',
                 description: 'Reliable, fuel-efficient, and ultra-quiet power solution for homes and businesses. Delivers stable performance with low noise operation and durable construction for long-lasting backup support.',
-                image: '1.jpg',
+                image: '1.JPG',
                 tech: ['25kva', 'SILENT', 'FUEL-EFFICIENT']
             },
             {
@@ -476,4 +476,5 @@
             }
 
         });
+
 
