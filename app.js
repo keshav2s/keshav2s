@@ -16,21 +16,21 @@ https://templatemo.com/tm-600-prism-flux
                 id: 1,
                 title: '25-KVA',
                 description: 'Reliable, fuel-efficient, and ultra-quiet power solution for homes and businesses. Delivers stable performance with low noise operation and durable construction for long-lasting backup support.',
-                image: 'IMAGES/1.jpg',
+                image: '1.jpg',
                 tech: ['25kva', 'SILENT', 'FUEL-EFFICIENT']
             },
             {
                 id: 2,
                 title: '62-KVA',
                 description: 'High-capacity diesel generator built for continuous performance and efficiency. Features advanced voltage regulation and sturdy build quality to ensure uninterrupted power for demanding applications.',
-                image: 'images/2.jpg',
+                image: '2.jpg',
                 tech: ['62kva', 'Efficient', 'Reliable']
             },
             {
                 id: 3,
                 title: '125-KVA',
                 description: 'The 125 kVA generator delivers reliable, fuel-efficient, and stable electricity with durable construction, making it ideal for continuous and backup power needs.',
-                image: 'images/3.jpg',
+                image: '3.jpg',
                 tech: ['Industrial', 'Heavy-Duty', 'Powerhouse']
             },
             {
@@ -480,4 +480,5 @@ https://templatemo.com/tm-600-prism-flux
             if (parallax) {
                 parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
+
         });
