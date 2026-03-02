@@ -56,6 +56,21 @@
                 tech: ['MQTT', 'Edge AI', '5G']
             }
         ];
+        // Skills data
+        const skillsData = [
+            { name: 'React.js', icon: '⚛️', level: 95, category: 'frontend' },
+            { name: 'Node.js', icon: '🟢', level: 10, category: 'backend' },
+            { name: 'TypeScript', icon: '📘', level: 88, category: 'frontend' },
+            { name: 'AWS', icon: '☁️', level: 92, category: 'cloud' },
+            { name: 'Docker', icon: '🐳', level: 85, category: 'cloud' },
+            { name: 'Python', icon: '🐍', level: 93, category: 'backend' },
+            { name: 'Kubernetes', icon: '☸️', level: 82, category: 'cloud' },
+            { name: 'GraphQL', icon: '◈', level: 87, category: 'backend' },
+            { name: 'TensorFlow', icon: '🤖', level: 78, category: 'emerging' },
+            { name: 'Blockchain', icon: '🔗', level: 75, category: 'emerging' },
+            { name: 'Vue.js', icon: '💚', level: 85, category: 'frontend' },
+            { name: 'MongoDB', icon: '🍃', level: 90, category: 'backend' }
+        ];
 
 
         // Scroll to section function
@@ -461,6 +476,7 @@
             }
 
         });
+
 
 
 
