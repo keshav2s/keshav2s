@@ -248,8 +248,10 @@
        
 
         // Event listeners
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+       const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
         // Auto-rotate carousel
         setInterval(nextSlide, 5000);
@@ -273,15 +275,14 @@
         initCarousel();
        // initSkillsGrid();
         initParticles();
-
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+}
 
         // Header scroll effect
         const header = document.getElementById('header');
@@ -386,10 +387,16 @@
         }
 
         // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
+       const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        alert(`Thank you ${data.name}! Your message has been transmitted successfully. We'll respond within 24 hours.`);
+        contactForm.reset();
+    });
+}
             // Get form data
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
@@ -418,6 +425,7 @@
             }
 
         });
+
 
 
 
