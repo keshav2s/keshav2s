@@ -1,8 +1,14 @@
+// JavaScript Document
+
+/* TemplateMo 600 Prism Flux
+https://templatemo.com/tm-600-prism-flux
+*/
+
 // Portfolio data for carousel
 const portfolioData = [
-    { id: 1, title: '25-KVA', description: 'Reliable, fuel-efficient, and ultra-quiet power solution for homes and businesses. Delivers stable performance with low noise operation and durable construction for long-lasting backup support.', image: '1.JPG', tech: ['25kva', 'SILENT', 'FUEL-EFFICIENT'] },
-    { id: 2, title: '62-KVA', description: 'High-capacity diesel generator built for continuous performance and efficiency. Features advanced voltage regulation and sturdy build quality to ensure uninterrupted power for demanding applications.', image: '2.jpg', tech: ['62kva', 'Efficient', 'Reliable'] },
-    { id: 3, title: '125-KVA', description: 'The 125 kVA generator delivers reliable, fuel-efficient, and stable electricity with durable construction, making it ideal for continuous and backup power needs.', image: '3.jpg', tech: ['Industrial', 'Heavy-Duty', 'Powerhouse'] },
+    { id: 1, title: '25-KVA', description: 'Reliable, fuel-efficient, and ultra-quiet power solution for homes and businesses. Delivers stable performance with low noise operation and durable construction for long-lasting backup support.', image: 'IMAGES/1.jpg', tech: ['25kva', 'SILENT', 'FUEL-EFFICIENT'] },
+    { id: 2, title: '62-KVA', description: 'High-capacity diesel generator built for continuous performance and efficiency. Features advanced voltage regulation and sturdy build quality to ensure uninterrupted power for demanding applications.', image: 'images/2.jpg', tech: ['62kva', 'Efficient', 'Reliable'] },
+    { id: 3, title: '125-KVA', description: 'The 125 kVA generator delivers reliable, fuel-efficient, and stable electricity with durable construction, making it ideal for continuous and backup power needs.', image: 'images/3.jpg', tech: ['Industrial', 'Heavy-Duty', 'Powerhouse'] },
     { id: 4, title: 'Cyber Defense', description: 'Military-grade cybersecurity framework with real-time threat detection and automated response.', image: 'images/cyber-defense.jpg', tech: ['Zero Trust', 'AI Defense', 'Encryption'] },
     { id: 5, title: 'Data Nexus', description: 'Big data processing platform capable of analyzing petabytes of information in real-time.', image: 'images/data-nexus.jpg', tech: ['Apache Spark', 'Hadoop', 'Kafka'] },
     { id: 6, title: 'AR Interface', description: 'Augmented reality system for immersive data visualization and interactive experiences.', image: 'images/ar-interface.jpg', tech: ['Unity', 'ARCore', 'Computer Vision'] },
@@ -15,8 +21,7 @@ function scrollToSection(sectionId) {
     const header = document.getElementById('header');
     if (section) {
         const headerHeight = header.offsetHeight;
-        const targetPosition = section.offsetTop - headerHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        window.scrollTo({ top: section.offsetTop - headerHeight, behavior: 'smooth' });
     }
 }
 
@@ -62,7 +67,6 @@ function initCarousel() {
     portfolioData.forEach((data, index) => {
         const item = createCarouselItem(data, index);
         carousel.appendChild(item);
-
         const indicator = document.createElement('div');
         indicator.className = 'indicator';
         if (index === 0) indicator.classList.add('active');
@@ -102,9 +106,7 @@ function updateCarousel() {
         else item.style.transform = 'translate(-50%, -50%) translateZ(-500px) scale(0.5)', item.style.opacity = '0', item.style.zIndex = '1';
     });
 
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentIndex);
-    });
+    indicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentIndex));
 }
 
 function nextSlide() { currentIndex = (currentIndex + 1) % portfolioData.length; updateCarousel(); }
@@ -112,11 +114,11 @@ function prevSlide() { currentIndex = (currentIndex - 1 + portfolioData.length) 
 function goToSlide(index) { currentIndex = index; updateCarousel(); }
 
 // Event listeners
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+document.getElementById('nextBtn').addEventListener('click', nextSlide);
+document.getElementById('prevBtn').addEventListener('click', prevSlide);
+setInterval(nextSlide, 5000);
 document.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') prevSlide(); if (e.key === 'ArrowRight') nextSlide(); });
+let resizeTimeout;
 window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(updateCarousel, 250); });
 
 // Initialize on load
@@ -126,23 +128,23 @@ initParticles();
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
-if (menuToggle && navMenu) menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); menuToggle.classList.toggle('active'); });
+menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); menuToggle.classList.toggle('active'); });
 
 // Header scroll effect
 const header = document.getElementById('header');
-window.addEventListener('scroll', () => { if (window.scrollY > 100) header.classList.add('scrolled'); else header.classList.remove('scrolled'); });
+window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 100); });
 
-// Smooth scrolling and active navigation
+// Smooth scrolling and active nav
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => link.addEventListener('click', function(e) {
+navLinks.forEach(link => link.addEventListener('click', e => {
     e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
+    const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
     if (targetSection) {
         window.scrollTo({ top: targetSection.offsetTop - header.offsetHeight, behavior: 'smooth' });
-        if (navMenu) navMenu.classList.remove('active');
-        if (menuToggle) menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
     }
 }));
 
@@ -150,10 +152,9 @@ function updateActiveNav() {
     const scrollPosition = window.scrollY + 100;
     sections.forEach(section => {
         if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === section.getAttribute('id')) link.classList.add('active');
-            });
+            navLinks.forEach(link => link.classList.remove('active'));
+            const href = section.getAttribute('id');
+            document.querySelectorAll(`.nav-link[href="#${href}"]`).forEach(link => link.classList.add('active'));
         }
     });
 }
@@ -162,42 +163,19 @@ window.addEventListener('scroll', updateActiveNav);
 // Animated counter for stats
 function animateCounter(element) {
     const target = parseInt(element.dataset.target);
-    const duration = 2000;
-    const step = target / (duration / 16);
+    const step = target / (2000 / 16);
     let current = 0;
     const counter = setInterval(() => { current += step; if (current >= target) { element.textContent = target; clearInterval(counter); } else element.textContent = Math.floor(current); }, 16);
 }
-
-// Intersection Observer for stats animation
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll('.stat-number');
-            statNumbers.forEach(number => { if (!number.classList.contains('animated')) { number.classList.add('animated'); animateCounter(number); } });
-        }
-    });
-}, { threshold: 0.5, rootMargin: '0px 0px -100px 0px' });
-
 const statsSection = document.querySelector('.stats-section');
-if (statsSection) observer.observe(statsSection);
+if (statsSection) new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.querySelectorAll('.stat-number').forEach(n => { if (!n.classList.contains('animated')) { n.classList.add('animated'); animateCounter(n); } }); }); }, { threshold: 0.5, rootMargin: '0px 0px -100px 0px' }).observe(statsSection);
 
 // Form submission
 const contactForm = document.getElementById('contactForm');
-if (contactForm) contactForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    alert(`Thank you ${data.name}! Your message has been transmitted successfully. We'll respond within 24 hours.`);
-    contactForm.reset();
-});
+if (contactForm) contactForm.addEventListener('submit', e => { e.preventDefault(); const data = Object.fromEntries(new FormData(contactForm)); alert(`Thank you ${data.name}! Your message has been transmitted successfully. We'll respond within 24 hours.`); contactForm.reset(); });
 
 // Loading screen
-window.addEventListener('load', () => {
-    setTimeout(() => { const loader = document.getElementById('loader'); if (loader) loader.classList.add('hidden'); }, 1500);
-});
+window.addEventListener('load', () => { const loader = document.getElementById('loader'); if(loader) loader.classList.add('hidden'); });
 
 // Parallax effect
-window.addEventListener('scroll', () => {
-    const parallax = document.querySelector('.hero');
-    if (parallax) parallax.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
-});
+window.addEventListener('scroll', () => { const parallax = document.querySelector('.hero'); if(parallax) parallax.style.transform = `translateY(${window.pageYOffset * 0.5}px)`; });
