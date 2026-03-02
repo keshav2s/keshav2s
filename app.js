@@ -386,8 +386,8 @@ if (menuToggle && navMenu) {
             observer.observe(statsSection);
         }
 
-        // Form submission
-       const contactForm = document.getElementById('contactForm');
+     // Form submission
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -396,7 +396,7 @@ if (contactForm) {
         alert(`Thank you ${data.name}! Your message has been transmitted successfully. We'll respond within 24 hours.`);
         contactForm.reset();
     });
-}
+}v
             // Get form data
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
@@ -425,6 +425,7 @@ if (contactForm) {
             }
 
         });
+
 
 
 
