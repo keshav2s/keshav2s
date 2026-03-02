@@ -45,8 +45,10 @@ https://templatemo.com/tm-600-prism-flux
 	--text-dim: #808080;
 }
 
-html {
+html,body {
 	scroll-behavior: smooth;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 body {
@@ -1637,5 +1639,6 @@ a.info-item {
 	}
 
 }
+
 
 
