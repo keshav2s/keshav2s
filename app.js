@@ -271,7 +271,7 @@
 
         // Initialize on load
         initCarousel();
-        initSkillsGrid();
+       // initSkillsGrid();
         initParticles();
 
         // Mobile menu toggle
@@ -418,6 +418,7 @@
             }
 
         });
+
 
 
 
