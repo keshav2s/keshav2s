@@ -245,50 +245,7 @@
             updateCarousel();
         }
 
-        // Initialize hexagonal skills grid
-        function initSkillsGrid() {
-            const skillsGrid = document.getElementById('skillsGrid');
-            const categoryTabs = document.querySelectorAll('.category-tab');
-            
-            function displaySkills(category = 'all') {
-                skillsGrid.innerHTML = '';
-                
-                const filteredSkills = category === 'all' 
-                    ? skillsData 
-                    : skillsData.filter(skill => skill.category === category);
-                
-                filteredSkills.forEach((skill, index) => {
-                    const hexagon = document.createElement('div');
-                    hexagon.className = 'skill-hexagon';
-                    hexagon.style.animationDelay = `${index * 0.1}s`;
-                    
-                    hexagon.innerHTML = `
-                        <div class="hexagon-inner">
-                            <div class="hexagon-content">
-                                <div class="skill-icon-hex">${skill.icon}</div>
-                                <div class="skill-name-hex">${skill.name}</div>
-                                <div class="skill-level">
-                                    <div class="skill-level-fill" style="width: ${skill.level}%"></div>
-                                </div>
-                                <div class="skill-percentage-hex">${skill.level}%</div>
-                            </div>
-                        </div>
-                    `;
-                    
-                    skillsGrid.appendChild(hexagon);
-                });
-            }
-            
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    displaySkills(tab.dataset.category);
-                });
-            });
-            
-            displaySkills();
-        }
+       
 
         // Event listeners
         document.getElementById('nextBtn').addEventListener('click', nextSlide);
@@ -461,6 +418,7 @@
             }
 
         });
+
 
 
 
