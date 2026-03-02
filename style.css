@@ -1161,15 +1161,14 @@ body::after {
 }
 
 /* Contact Section */
-@media (max-width: 768px) {
 .contact-section {
-	padding: 80px 20px;
+	padding: 120px 30px;
 	background: linear-gradient(180deg,
 			var(--carbon-dark) 0%,
 			var(--primary-black) 100%);
 	position: relative;
-  }
- }
+}
+
 .contact-container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -1643,8 +1642,6 @@ a.info-item {
 	}
 
 }
-
-
 
 
 
