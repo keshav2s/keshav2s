@@ -941,7 +941,9 @@ body::after {
 	margin-bottom: 10px;
 	font-family: 'Orbitron', monospace;
 }
-
+.special::after{
+	content: "%"
+}
 .stat-label {
 	font-size: 14px;
 	color: var(--text-secondary);
@@ -1620,4 +1622,5 @@ a.info-item {
 		gap: 20px;
 		text-align: center;
 	}
+
 }
