@@ -56,6 +56,7 @@
                 tech: ['MQTT', 'Edge AI', '5G']
             }
         ];
+
         // Skills data
         const skillsData = [
             { name: 'React.js', icon: '⚛️', level: 95, category: 'frontend' },
@@ -476,6 +477,7 @@
             }
 
         });
+
 
 
 
