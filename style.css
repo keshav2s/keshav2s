@@ -941,8 +941,8 @@ body::after {
 	margin-bottom: 10px;
 	font-family: 'Orbitron', monospace;
 }
-.special::after{
-	content: "%"
+.stat-number::after {
+    content: attr(data-suffix);
 }
 .stat-label {
 	font-size: 14px;
@@ -1624,3 +1624,4 @@ a.info-item {
 	}
 
 }
+
