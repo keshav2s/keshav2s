@@ -871,14 +871,17 @@ body::after {
 }
 
 /* Stats Section with Content */
-.stats-section {
-	padding: 120px 30px;
-	background: linear-gradient(180deg,
+@media (max-width: 768px) {
+	.stats-section {
+		padding: 80px 20px;
+		background: linear-gradient(180deg,
 			var(--primary-black) 0%,
 			var(--carbon-dark) 50%,
 			var(--primary-black) 100%);
 	position: relative;
+	}
 }
+
 
 .stats-grid {
 	max-width: 1200px;
@@ -1639,6 +1642,7 @@ a.info-item {
 	}
 
 }
+
 
 
 
